@@ -1,0 +1,41 @@
+---
+title: "R Markdown Presentation & Plotly"
+author: Ivan Castillo
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+##Instructions
+
+Create a web page presentation using R Markdown that features a plot created with Plotly. Host your webpage on either GitHub Pages, RPubs, or NeoCities.
+
+Your webpage must contain the date that you created the document, and it must contain a plot created with Plotly. We would love to see you show off your creativity!
+
+## US unemployment rate time series
+
+Using economic data from united states included in ggplot2 package, we can calculate chronologically the unemployment rate in US.
+
+```{r warning=FALSE, message=FALSE}
+library(plotly)
+p <- plot_ly(economics, x = ~date, y = ~unemploy / pop)
+htmltools::tagList(list(p, p))
+```
+
+## US economic time series data
+
+### Description
+
+This dataset was produced from US economic time series data available from http://research.stlouisfed.org/fred2. economics is in "wide" format, economics_long is in "long" format.
+
+### Variables
+
++ _date:_ Month of data collection
+
++ _unemploy:_ Number of unemployed in thousands
+
++ _pop:_ Total population, in thousands
+
